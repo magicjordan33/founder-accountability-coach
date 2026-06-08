@@ -15,10 +15,10 @@ Built for founders in the hardest window: the 90 days before traction, before pr
 Go to claude.ai, create a new Project, and upload all files in this folder to the project knowledge.
 
 ### Step 2 — Connect the dayNumber_ MCP
-In your Claude project settings, add a new MCP server:
-
-- Name: dayNumber_
-- URL: https://mcp.daynumber.io/mcp
+The dayNumber_ Claude connector is currently pending approval. To connect early,
+request your credentials by DMing @jordan on dayNumber_ or emailing jordan@daynumber.io.
+Once the connector is approved it will be available directly inside Claude with one tap —
+no credentials needed.
 
 This gives the coach direct access to your real logs, your day #, and the full dayNumber_ network. The coach reads your actual journey — not what you paste in.
 
