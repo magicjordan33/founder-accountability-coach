@@ -41,7 +41,7 @@ Save and start a new conversation. The coach will automatically have access to y
 - `get_morning_brief` — your current day #, streak, and recent summary
 - `get_network_signal` — query the entire founder network
 - `get_community` — community stats if you are in one
-- `post_log` — log today's entry directly from Claude
+- `post_log` — log today's entry directly from Claude. this is the tool `LOG_MY_DAY.md` calls once you confirm your draft.
 - `query_journey` — AI-powered query across your full log history
 
 ---

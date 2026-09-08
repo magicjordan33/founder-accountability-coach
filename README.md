@@ -1,22 +1,44 @@
 # founder-accountability-coach
 
-> an AI-powered morning brief that tells you the single most important thing to do today — built from your actual data, not templates.
+> the only four words you need to say to your AI at the end of the day: "log my day number." everything else here — the morning brief, the coaching, the pattern-reading — builds from that one honest habit.
 
 ---
 
 ## what this is
 
-every morning, before you do anything else, an AI reads your dayNumber_ logs, your inbox, and your calendar — then tells you exactly what to do today to hit your goal.
+two things, one record.
 
-not a to-do list. not a generic productivity prompt. a brief built from your actual situation: what conversations are open, what follow-ups are due, what your consistency signal looks like, how many days you have left to hit your target.
+**every night**, you say four words to Claude — "log my day number" — and it gathers what actually happened today (from your conversation, or by asking one sharp question if it needs more), drafts an honest log in your voice, shows it to you, and posts it to dayNumber_ once you confirm. no blank field, no second app.
 
-it takes 60 seconds to read. it tells you the one thing that moves the needle most today.
+**every morning**, before you do anything else, Claude reads that record — plus your inbox and calendar if you connect them — and tells you the single most important thing to do today. not a to-do list. a brief built from what's actually alive.
 
-this repo contains the prompt template, setup instructions, and the MORNING_BRIEF.md file you need to run this inside a Claude project.
+between the two, you get a coach: something that's read your actual logs, tracks your patterns, and asks the question you've been avoiding instead of the one that's easy to answer.
+
+this repo contains everything you need to run all three inside a Claude project.
 
 ---
 
 ## what it looks like
+
+saying the four words, 11pm:
+
+```
+you: log my day number
+
+claude: here's the draft —
+
+"spent most of today debugging the payment webhook, no luck. did get
+a reply from the accelerator, call's booked for thursday. also just
+tired today, wanted to quit around 4pm, didn't."
+
+want to add or change anything before I post it?
+
+you: post it
+
+claude: logged. day #327, streak's at 40.
+```
+
+the next morning:
 
 ```
 day #326 — june 18, 2026
@@ -51,21 +73,21 @@ Ford: the assembly line only works if every station is moving.
 | sprint partner confirmed    | 0       | 1      | —         |
 ```
 
-this is a real brief. pulled from live data. zero fabrication.
+both pulled from live data. zero fabrication, either direction.
 
 ---
 
 ## how it works
 
-the brief pulls from three sources simultaneously:
+three layers, one record:
 
-**dayNumber_** — your proof-of-work layer. every day you log publicly, your day # goes up. the AI reads your streak, your consistency signal, your total logs, and how many other founders are active on the platform. the more you log, the more context the AI has about what you're actually building. longer log history = smarter brief.
+**the log** — four words, end of day. Claude drafts from your actual conversation, you confirm, it posts to dayNumber_. this is the one non-negotiable habit everything else depends on.
 
-**Gmail** — your inbox. the AI scans for unread replies from anyone in your target audience overnight. VC replies, founder responses, accelerator confirmations. it surfaces what needs a response before anything else.
+**dayNumber_** — your proof-of-work layer. every day you log publicly, your day # goes up. the AI reads your streak, your consistency signal, your total logs, and how many other founders are active on the platform. longer log history = smarter brief, smarter coaching.
 
-**Google Calendar** — your follow-up queue. every reminder, call, and follow-up due today shows up in the brief. nothing falls through.
+**Gmail + Google Calendar** — optional. sharpens the morning brief with overnight replies and today's calls and follow-ups. the brief and the log both work without these; dayNumber_ is the one required connection.
 
-the AI then synthesizes these three streams into one output: the single most important thing to do today, followed by a prioritized focus list for the rest of the day.
+**the coach** — reads your logs, tracks your patterns, and pushes back. not a mentor, not a hype machine. the thing that asks the question you've been avoiding.
 
 ---
 
@@ -77,73 +99,61 @@ go to [claude.ai](https://claude.ai) and create a new Project. projects give Cla
 
 ### step 2 — connect your tools
 
-in the project settings, connect the following MCP integrations:
+in the project settings, connect:
 
-- **dayNumber_** — connect at [daynumber.io/connect](https://daynumber.io/connect). this is the core data layer. your daily logs are what make the brief specific to you.
-- **Gmail** — connect via the Google MCP integration in Claude settings
-- **Google Calendar** — connect via the Google MCP integration in Claude settings
+- **dayNumber_** — connect at [daynumber.io/connect](https://daynumber.io/connect). required. this is what makes the log real and the brief specific to you.
+- **Gmail** and **Google Calendar** — optional, connect via the Google MCP integration in Claude settings, for a sharper morning brief.
 
-the brief works without Gmail and Calendar but it will be less specific. dayNumber_ is the minimum required connection.
+### step 3 — add the project instructions
 
-### step 3 — add the morning brief instructions
+paste the full contents of both [`LOG_MY_DAY.md`](./LOG_MY_DAY.md) and [`MORNING_BRIEF.md`](./MORNING_BRIEF.md) into your project's **Project Instructions**. these define what Claude does automatically, every session: the four-word logging trigger and the morning brief.
 
-copy the contents of [`MORNING_BRIEF.md`](./MORNING_BRIEF.md) from this repo into your Claude project's **Project Instructions** (the system prompt for the project).
+### step 4 — add the coach
 
-customize the following fields for your situation:
+upload [`coach.md`](./coach.md), [`identity.md`](./identity.md), [`rules.md`](./rules.md), [`examples.md`](./examples.md), [`mcp.md`](./mcp.md), and the [`reference/`](./reference) folder to your project's **Project Knowledge**. this is what turns "logs your day and briefs you" into "coaches you" — the Three Windows, the consistency signals, the quit signal, the weekly review.
+
+### step 5 — customize your goal
+
+edit the `## your goal` block at the top of `MORNING_BRIEF.md`:
 
 ```
-## your goal
-[what you are working toward and in what timeframe — e.g. "close $500K pre-seed by September 1"]
-
-## the metric that matters most
-[the single number that tells you if you're on track — e.g. "10 paying customers"]
-
-## the warmest open thread
-[the single most important relationship or conversation you are trying to close right now]
-
-## the call pipeline
-[any calls or meetings booked this week]
+FOUNDER NAME: [your name]
+CURRENT GOAL: [what you're working toward — e.g. "close $500K pre-seed by September 1"]
+GOAL DEADLINE: [date]
+THE METRIC THAT MATTERS MOST: [the single number that tells you if you're on track]
+CURRENT COUNT: [where you are right now]
+TARGET COUNT: [where you need to be]
+DAYS REMAINING: [calculate from today to deadline]
+WARMEST OPEN THREAD: [the one relationship or conversation you're trying to close]
+CALL PIPELINE: [calls or meetings booked this week]
 ```
 
-### step 4 — start every session with anything
-
-the brief triggers automatically at the start of every new conversation in the project. you don't have to ask for it. just open Claude and say good morning. the brief runs before anything else.
+everything else adapts automatically.
 
 ---
 
-## the brief gets smarter the more you log
-
-the dayNumber_ connection is what separates this from any other productivity prompt.
+## the record gets smarter the more you log
 
 when you log once a week, the AI knows roughly what you're working on.
 
-when you log every day for 90 days, the AI knows your patterns — what you keep saying you'll do but don't, where your momentum actually lives, what you're avoiding. the brief stops being a summary of external data and starts being a mirror of how you actually build.
+when you log every day for 90 days, it knows your patterns — what you keep saying you'll do but don't, where your momentum actually lives, what you're avoiding. the brief and the coaching stop being a summary of external data and start being a mirror of how you actually build.
 
-the AI has read a founder's 300 days of honest logs and told them: *"you're not inconsistent about building. you're inconsistent about talking to customers. that's the difference between a tool no one uses and something that matters."*
-
-that kind of insight only exists after 300 days of honest logs. start logging now.
-
----
-
-## customizing for your goal
-
-the template ships configured for a founder raising a fund with a 90-day target. it works equally well for:
-
-- **pre-seed fundraising** — track warm investor threads, follow-up cadence, and call pipeline
-- **first 10 customers** — track outreach, demo bookings, and conversion pipeline
-- **product launch** — track build milestones, beta user count, and launch checklist
-- **30-day sprint** — set a specific 30-day goal and track daily progress against it
-
-change the goal section in `MORNING_BRIEF.md` to match your situation. everything else adapts automatically.
+start with the four words tonight. everything else compounds from there.
 
 ---
 
 ## files in this repo
 
 ```
-MORNING_BRIEF.md        — the full prompt template. paste this into your Claude project instructions.
-EXAMPLE_BRIEF.md        — a real example brief with annotations explaining each section.
-CUSTOMIZATION_GUIDE.md  — how to adapt the template for different founder goals.
+LOG_MY_DAY.md                      — the four-word logging trigger. paste into Project Instructions.
+MORNING_BRIEF.md                   — the morning brief trigger. paste into Project Instructions.
+coach.md                           — the full coaching system prompt. upload as Project Knowledge.
+identity.md                        — who the coach is. upload as Project Knowledge.
+rules.md                           — the ten coaching rules. upload as Project Knowledge.
+examples.md                        — coaching vs. knowledge-base responses, side by side. upload as Project Knowledge.
+mcp.md                             — how to connect the dayNumber_ MCP server.
+reference/day-number-framework.md  — the day # system explained.
+reference/coaching-drills.md       — specific techniques for common founder moments.
 ```
 
 ---
@@ -151,8 +161,6 @@ CUSTOMIZATION_GUIDE.md  — how to adapt the template for different founder goal
 ## built on dayNumber_
 
 this tool is built on top of [dayNumber_](https://daynumber.io) — the proof-of-work layer for founders. every day you log publicly on dayNumber_, your day # goes up. the record is permanent, public, and machine-readable.
-
-the morning brief is what happens when your proof-of-work record meets your live inbox and calendar. the combination gives the AI enough context to tell you something true and specific about today — not something generic about productivity.
 
 **what's your day #?**
 
@@ -166,4 +174,4 @@ this is an open template. if you adapt it for a specific use case — a 30-day s
 
 ---
 
-*built by [jordan ovejas](https://daynumber.io/jordan) — day #326*
+*built by [jordan ovejas](https://daynumber.io) — see the current day # on [my public profile](https://daynumber.io/jordan)*
