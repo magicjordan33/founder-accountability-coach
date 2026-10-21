@@ -168,6 +168,37 @@ this tool is built on top of [dayNumber_](https://daynumber.io) — the proof-of
 
 ---
 
+## installing in Cline
+
+dayNumber_ is a remote MCP server, so there is nothing to install locally.
+
+In VS Code with the Cline extension:
+
+1. Open the MCP Servers panel and choose **Remote Servers**.
+2. Add a server with:
+   - Name: `daynumber`
+   - URL: `https://mcp.daynumber.io/mcp`
+3. Cline will open the OAuth sign-in. Connect your dayNumber_ account at [daynumber.io/connect](https://daynumber.io/connect) if you have not already.
+
+Or add it directly to your `cline_mcp_settings.json`:
+
+```json
+{
+  "mcpServers": {
+    "daynumber": {
+      "url": "https://mcp.daynumber.io/mcp",
+      "transportType": "streamable-http",
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}
+```
+
+Once connected, say "log my day number" at the end of the day and the coach drafts, confirms, and posts your log through the dayNumber_ MCP server.
+
+---
+
 ## contributing
 
 this is an open template. if you adapt it for a specific use case — a 30-day sprint, a sales pipeline, a product launch countdown — open a PR with your version and a description of what you changed and why.
